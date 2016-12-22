@@ -4,7 +4,6 @@ import java.io.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
-import sun.audio.*;
 
 public class Main extends JFrame{
 
@@ -28,19 +27,18 @@ public class Main extends JFrame{
         new Main();
     }
     
-    public static void play(String filename)
-{
-    try
-    {
-        Clip clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-        clip.start();
+    public static void play(String filename) {
+        try
+        {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+            clip.start();
+        }
+        catch (Exception exc)
+        {
+            exc.printStackTrace(System.out);
+        }
     }
-    catch (Exception exc)
-    {
-        exc.printStackTrace(System.out);
-    }
-}
     
     
     
