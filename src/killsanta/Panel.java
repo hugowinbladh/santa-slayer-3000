@@ -95,7 +95,7 @@ public class Panel extends JPanel implements ActionListener, MouseListener, Mous
         int tmp = 0;
         for (int i : santaYs) {
             if (Math.hypot((santaXs.get(tmp) + 70) - (bulletX + 25), (i + 25) - (bulletY - 50)) < 70) {
-                bulletX = 50;
+                bulletX = -200;
                 santaYs.set(tmp, (int) Math.ceil(Math.random() * 370));
                 santaXs.set(tmp, (int) Math.ceil(Math.random() * 100) + 800);
                 score++;
