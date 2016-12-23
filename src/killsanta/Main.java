@@ -1,15 +1,12 @@
 package killsanta;
 
 import java.io.*;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import javax.swing.*;
-import sun.audio.*;
 
-public class Main extends JFrame{
+public class Main extends JFrame {
 
     Panel panel;
-    
     
     public Main(){
         InputStream is = getClass().getClassLoader().getResourceAsStream("sounds/samp.wav");
@@ -21,28 +18,26 @@ public class Main extends JFrame{
         setResizable(false);
         add(panel);
         setVisible(true);
+        playMusic("res/music.wav");
     }
     
     public static void main(String[] args) {
-        play("res/music.wav");
+        
         new Main();
     }
     
-    public static void play(String filename)
-{
-    try
-    {
-        Clip clip = AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-        clip.start();
+    public static void playMusic(String filename) {
+        while(true){
+            try {
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+                clip.start();
+                Thread.sleep(325000);
+            }
+            catch (Exception exc){
+                System.out.println("exc");
+            }
+            
+        }
     }
-    catch (Exception exc)
-    {
-        exc.printStackTrace(System.out);
-    }
-}
-    
-    
-    
-    
 }
